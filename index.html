@@ -1,1 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker Typer</title>
+    <style>
+        body {
+            background-color: black;
+            color: lime;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        #typing-area {
+            width: 80%;
+            height: 300px;
+            background-color: black;
+            border: 2px solid lime;
+            color: lime;
+            padding: 10px;
+            overflow-y: scroll;
+            white-space: pre;
+        }
+        #start-button {
+            padding: 10px 20px;
+            background-color: lime;
+            color: black;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
 
+    <h1>dani</h1>
+    <p>Ketik dengan cepat dan lihat hasilnya!</p>
+    <div id="typing-area" contenteditable="true"></div>
+    <br>
+    <button id="start-button">Mulai Mengetik</button>
+
+    <script>
+        const typingArea = document.getElementById('typing-area');
+        const startButton = document.getElementById('start-button');
+        
+        const text = `
+        // Menginisialisasi variabel
+        var hack = "Hacking in progress...";
+        console.log(hack);
+        
+        // Fungsi untuk menampilkan pesan
+        function displayMessage() {
+            alert("Selamat! Anda adalah hacker!");
+        }
+        
+        // Menjalankan fungsi
+        displayMessage();
+        `;
+
+        startButton.addEventListener('click', () => {
+            typingArea.textContent = '';
+            let index = 0;
+            const interval = setInterval(() => {
+                if (index < text.length) {
+                    typingArea.textContent += text.charAt(index);
+                    index++;
+                    typingArea.scrollTop = typingArea.scrollHeight; // Scroll ke bawah
+                } else {
+                    clearInterval(interval);
+                }
+            }, 100); // Kecepatan ketik
+        });
+    </script>
+
+</body>
+</html>
